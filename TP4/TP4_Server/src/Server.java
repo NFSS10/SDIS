@@ -4,13 +4,21 @@ import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.HashMap;
 	
 public class Server implements Hello {
 	
-    public Server() {}
+	HashMap<String, String> hmap;
+	
+    public Server() {
+    	hmap= new HashMap<String, String>();
+    	hmap.put("12345","Celso");
+    }
 
-    public String sayHello() {
-	return "Hello, world!";
+    public String procurarNome(String matricula) {
+    	 System.err.println("A procurar matricula...");
+    	 String nome = hmap.get(matricula);
+    	 return nome;
     }
 	
     public static void main(String args[]) {
@@ -21,7 +29,7 @@ public class Server implements Hello {
 
 	    // Bind the remote object's stub in the registry
 	    Registry registry = LocateRegistry.getRegistry();
-	    registry.bind("Hello", stub);
+	    registry.bind("hello", stub);
 
 	    System.err.println("Server ready");
 	} catch (Exception e) {
