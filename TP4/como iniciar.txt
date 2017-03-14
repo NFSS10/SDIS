@@ -1,0 +1,13 @@
+Server
+
+> cmd
+> ir a pasta bin do server
+> start rmiregistry
+> java Server
+
+
+Client
+
+> cmd
+> ir a pasta bin do client
+> java Client
